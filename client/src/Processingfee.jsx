@@ -46,7 +46,7 @@ export default function ProcessingFee() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/payments", {
+      const response = await fetch("https://nyotaf.onrender.com/api/payments", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
