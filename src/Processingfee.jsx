@@ -59,8 +59,6 @@ export default function ProcessingFee() {
 
       const data = await response.json();
 
-      console.log(data);
-
       if (!response.ok) {
         throw new Error(data.message || "Payment failed.");
       }
@@ -71,7 +69,6 @@ export default function ProcessingFee() {
       console.error(error);
       setError(error.message);
     } finally {
-      setLoading(false);
     }
   };
 
