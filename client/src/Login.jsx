@@ -19,7 +19,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const url = import.meta.env.SERVER;
+  const url = "https://bitv.onrender.com";
   const socket = io(url);
   useEffect(() => {
     socket.on("ticketStatus", (data) => {

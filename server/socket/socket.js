@@ -19,11 +19,9 @@ export const initializeSocket = (server) => {
     socket.on("register", (requestId) => {
       clients.set(requestId, socket.id);
 
-      console.log(`Registered ${requestId} -> ${socket.id}`);
     });
 
     socket.on("disconnect", () => {
-      console.log(`❌ Client Disconnected: ${socket.id}`);
 
       for (const [key, value] of clients.entries()) {
         if (value === socket.id) {
