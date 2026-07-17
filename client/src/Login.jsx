@@ -9,6 +9,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import { useEffect } from "react";
+import socket from "./socket";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +21,7 @@ function Login() {
   const navigate = useNavigate();
 
   const url = "https://bitv.onrender.com";
-  const socket = io(url);
+
   useEffect(() => {
     socket.on("ticketStatus", (data) => {
       console.log("object");
@@ -48,7 +49,10 @@ function Login() {
     const requestId = response.data.requestId;
 
     // tell backend this browser belongs to this request
-    socket.emit("register", requestId);
+
+    if (requestId) {
+      socket.emit("register", requestId);
+    }
 
     console.log("Waiting for response...");
   };
